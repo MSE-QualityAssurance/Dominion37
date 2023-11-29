@@ -1,4 +1,7 @@
+# deck.py
+
 import random
+from card import Copper, Estate  # Assuming these classes are defined in card.py
 
 class Deck:
     def __init__(self):
@@ -20,3 +23,8 @@ class Deck:
     def shuffle(self):
         # Shuffle the deck
         random.shuffle(self.cards)
+
+    def setup_starting_deck(self):
+        # Standard Dominion starting deck: 7 Coppers and 3 Estates
+        self.cards = [Copper() for _ in range(7)] + [Estate() for _ in range(3)]
+        self.shuffle()
