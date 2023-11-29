@@ -1,20 +1,23 @@
+from dominion_game import DominionGame
 from player import Player
 from supply import Supply
-from dominion_game import DominionGame
 
 def main():
-    # Create players (for simplicity, using 2 players)
+    # Create players
     player1 = Player("Alice")
     player2 = Player("Bob")
+    players = [player1, player2]
 
     # Set up the supply
-    supply = Supply()  # You'll define the setup in the Supply class
+    # Example setup; actual setup will depend on your game rules
+    supply = Supply({"Gold": (None, 30), "Estate": (None, 14)})
 
     # Create the game instance
-    game = DominionGame([player1, player2], supply)
+    game = DominionGame(players, supply)
+    game.setup_game()
 
     # Start the game
     game.play_game()
 
 if __name__ == "__main__":
-    main()
+    main
