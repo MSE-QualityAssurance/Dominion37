@@ -1,3 +1,5 @@
+from card import *
+
 class Supply:
     def __init__(self, card_sets):
         # card_sets is a dictionary with card names as keys and tuples (card object, count) as values

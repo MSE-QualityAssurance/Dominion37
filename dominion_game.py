@@ -24,11 +24,12 @@ class DominionGame:
     def play_turn(self, player):
         # Example turn structure
         player.draw_hand()
+        player.print_status()
         # Implement action phase (for now, skipping)
         # Implement buy phase
         # Example: let player buy one card
         if len(self.supply.available_cards) > 0:
-            card_name = list(self.supply.available_cards.keys())[0]  # Example: buying the first available card
+            card_name = list(self.supply.available_cards.values())[0][0]  # Example: buying the first available card
             player.buy_card(card_name, self.supply)
         # Clean up phase
         player.discard_hand()

@@ -1,4 +1,5 @@
 from deck import Deck
+from card import VictoryCard
 
 class Player:
     def __init__(self, name):
@@ -8,6 +9,17 @@ class Player:
         self.discard_pile = []
         self.coins = 0  # Track the number of coins a player has
         self.actions = 1  # Track the number of actions a player can perform
+
+    def print_status(self):
+        # Print player's hand
+        hand_names = [card.name for card in self.hand]
+        hand_str = ', '.join(hand_names)
+        print(f"Hand: {hand_str}")
+
+        # Print player's coins and actions
+        print(f"Coins: {self.coins}")
+        print(f"Actions: {self.actions}")
+        print()
 
     def draw_card(self):
         # Draw a single card from the deck
@@ -56,3 +68,11 @@ class Player:
         # Reshuffle discard pile into the deck
         self.deck.reshuffle_from_discard(self.discard_pile)
         self.discard_pile.clear()
+
+    def calculate_points(self):
+        # Calculate the total victory points from the player's deck and discard pile
+        total_points = 0
+        for card in self.deck.cards + self.discard_pile:
+            if isinstance(card, VictoryCard):
+                total_points += card.points
+        return total_points
